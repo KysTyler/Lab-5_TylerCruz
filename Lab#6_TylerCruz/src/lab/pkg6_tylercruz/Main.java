@@ -651,13 +651,12 @@ public class Main extends javax.swing.JFrame {
                     );
             n.add(p);
             raiz.add(n);
-        }  // fin if          
+        }  // fin if 
+        
         m.reload();
         modelo.addElement(namePais);
         this.jt_NamePais.setText("");
         this.jt_nameHimno.setText("");
-
-
     }//GEN-LAST:event_jb_AddTree_PaisActionPerformed
 
     private void jmi_AggPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_AggPersonaActionPerformed
@@ -665,11 +664,11 @@ public class Main extends javax.swing.JFrame {
         DefaultTreeModel modeloARBOL
                 = (DefaultTreeModel) jt_Normal.getModel();
         if (jl_Males.getSelectedIndex() >= 0) {
+            DefaultListModel modeloLISTA
+                    = (DefaultListModel) jl_Males.getModel();
             DefaultMutableTreeNode raiz
                     = (DefaultMutableTreeNode) modeloARBOL.getRoot();
             //obtener la persona a guardar
-            DefaultListModel modeloLISTA
-                    = (DefaultListModel) jl_Males.getModel();
             String nacionalidad, nombre, apellido;
             int edad;
             nacionalidad
@@ -699,6 +698,8 @@ public class Main extends javax.swing.JFrame {
                 n.add(p);
                 nodo_seleccionado.add(n);
             }  // fin if  
+            int index = jl_Males.getSelectedIndex();
+            modeloLISTA.remove(index);
             jl_Males.clearSelection();
             modeloARBOL.reload();
 
@@ -739,6 +740,8 @@ public class Main extends javax.swing.JFrame {
                 n.add(p);
                 nodo_seleccionado.add(n);
             }  // fin if  
+            int index = jl_Females.getSelectedIndex();
+            modeloLISTA1.remove(index);
             jl_Females.clearSelection();
             modeloARBOL.reload();
         } else {
@@ -827,6 +830,9 @@ public class Main extends javax.swing.JFrame {
                 = (DefaultTreeModel) jt_Normal.getModel();
         DefaultMutableTreeNode padre = (DefaultMutableTreeNode) nodo_seleccionado.getParent();
         padre.remove(nodo_seleccionado);
+//        DefaultListModel modeloLISTA
+//                    = (DefaultListModel) jl_Females.getModel();
+//            modeloLISTA.addElement(nodo_seleccionado);
         m.reload();
     }//GEN-LAST:event_jmi_ElimPersonaActionPerformed
 
